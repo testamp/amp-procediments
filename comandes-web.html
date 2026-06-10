@@ -1040,6 +1040,96 @@
         }
 
         /* ============================================
+           CAPTURES DE PANTALLA (Navision)
+        ============================================ */
+        .screenshot {
+            margin: var(--space-4) 0;
+        }
+
+        .screenshot img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            background: white;
+        }
+
+        .screenshot-caption {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-top: var(--space-2);
+            font-style: italic;
+        }
+
+        /* ============================================
+           LLEGENDA D'ACCIONS DE NAVISION
+        ============================================ */
+        .nav-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-2);
+            margin: var(--space-4) 0;
+        }
+
+        .legend-item {
+            padding: var(--space-3);
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        .legend-action {
+            display: block;
+            font-weight: 700;
+            color: var(--color-noruega);
+            margin-bottom: 2px;
+        }
+
+        .legend-desc {
+            color: var(--color-text-soft);
+        }
+
+        /* ============================================
+           TAULA DE TRANSPORTISTES
+        ============================================ */
+        .transport-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-4) 0;
+            font-size: 0.9rem;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .transport-table th {
+            background: var(--color-noruega);
+            color: white;
+            text-align: left;
+            padding: var(--space-3) var(--space-4);
+            font-weight: 700;
+        }
+
+        .transport-table td {
+            padding: var(--space-3) var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text-soft);
+        }
+
+        .transport-table td:first-child {
+            font-weight: 700;
+            color: var(--color-text);
+            white-space: nowrap;
+        }
+
+        .transport-table tr:nth-child(even) {
+            background: var(--color-bg);
+        }
+
+        /* ============================================
            SECCIÓ BONES PRÀCTIQUES
         ============================================ */
         .best-practices {
@@ -1478,7 +1568,7 @@
         <main class="content">
             <div class="section-header-internal">
                 <span class="section-eyebrow">Procediment pas a pas</span>
-                <h2 class="section-title">Els 6 passos per tramitar una comanda web</h2>
+                <h2 class="section-title">Els 8 passos per tramitar una comanda web</h2>
                 <p class="section-subtitle">
                     Marca cada pas a mesura que el completis. El teu progrés es guarda automàticament al teu navegador. Pots clicar a qualsevol pas per expandir el detall.
                 </p>
@@ -1624,7 +1714,7 @@
                             <span class="step-tag tag-platform">Plataforma</span>
                         </div>
                         <h3 class="step-card-title">Revisar la pantalla de precomanda</h3>
-                        <p class="step-card-summary">Comparar les dades de facturació i enviament registrades amb les que entren amb la comanda.</p>
+                        <p class="step-card-summary">Comparar dades, executar les accions de Navision en l'ordre correcte i vigilar les adreces d'enviament ja utilitzades.</p>
                     </div>
                     <div class="step-toggle">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1640,8 +1730,85 @@
                             <li>Una <strong>comparativa</strong> entre les dades que tenim registrades i les que entren amb la comanda</li>
                         </ul>
 
+                        <h4>Les accions de Navision a la precomanda</h4>
+                        <p>A la part superior de la pantalla trobaràs la barra d'accions de Navision. Des d'aquí es creen clients i comandes i s'actualitzen les dades:</p>
+
+                        <div class="screenshot">
+                            <img src="img/nav-accions-precomanda.png" alt="Barra d'accions de Navision a la pantalla de precomanda">
+                            <div class="screenshot-caption">Barra d'accions de Navision a la pantalla de precomanda</div>
+                        </div>
+
+                        <h4>Llegenda de les accions</h4>
+                        <div class="nav-legend">
+                            <div class="legend-item">
+                                <span class="legend-action">Nuevo cliente</span>
+                                <span class="legend-desc">Crea una fitxa de client nova al sistema</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-action">Nueva dirección envío</span>
+                                <span class="legend-desc">Crea una adreça d'enviament nova per al client</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-action">Actualizar datos fiscales</span>
+                                <span class="legend-desc">Actualitza les dades fiscals del client amb les de la comanda</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-action">Actualizar dirección entrega</span>
+                                <span class="legend-desc">Actualitza l'adreça d'entrega registrada</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-action">Crear pedido</span>
+                                <span class="legend-desc">Genera la comanda a Navision (pas 6)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-action">Cliente</span>
+                                <span class="legend-desc">Obre la fitxa del client</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-action">Dirección envío</span>
+                                <span class="legend-desc">Consulta les adreces d'enviament del client</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-action">Contactos</span>
+                                <span class="legend-desc">Consulta els contactes associats al client</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-action">Anular pedido</span>
+                                <span class="legend-desc">Anul·la la comanda</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-action">Ver pedido en firme</span>
+                                <span class="legend-desc">Mostra la comanda en ferm generada</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-action">Ver oferta en firme</span>
+                                <span class="legend-desc">Mostra l'oferta en ferm</span>
+                            </div>
+                        </div>
+
+                        <h4>Abans de crear res, comprova</h4>
+                        <ul>
+                            <li>Que el <strong>codi postal (CP)</strong> està correctament creat al sistema. Si no existeix, cal crear-lo</li>
+                            <li>Que les <strong>dades informades a cada camp</strong> són correctes. És important per com quedarà registrada la fitxa i l'adreça d'enviament</li>
+                        </ul>
+
+                        <h4>Ordre habitual de les accions</h4>
+                        <p>Si tota la informació és correcta, el flux normal és:</p>
+                        <ul>
+                            <li><strong>Client nou:</strong> Nuevo cliente → Nueva dirección envío</li>
+                            <li><strong>Client existent:</strong> Actualizar datos fiscales → Actualizar dirección entrega (si és necessari)</li>
+                        </ul>
+
                         <h4>Camps en vermell</h4>
                         <p>Si algun camp surt <strong>en vermell</strong>, indica una discrepància entre les dades registrades i les noves. Cal revisar si s'han de modificar o no, <strong>segons el que ens indiqui el client</strong>.</p>
+
+                        <div class="callout callout-warning">
+                            <div class="callout-icon">🚨</div>
+                            <div class="callout-content">
+                                <div class="callout-title">MOLT IMPORTANT: adreces d'enviament ja utilitzades</div>
+                                <div class="callout-text">Si el client modifica una adreça d'enviament que <strong>ja s'ha fet servir anteriorment</strong>, cal <strong>avisar en Xavier</strong>. Una adreça amb enviaments previs <strong>NO s'ha de modificar mai</strong>: en tenim un registre d'enviament associat, i si la modifiquem, el TPE registrat ja no tindria aquesta adreça guardada. En Xavier <strong>crearà una adreça nova</strong> en lloc de modificar l'existent, i així evitem el problema.</div>
+                            </div>
+                        </div>
 
                         <div class="callout callout-info">
                             <div class="callout-icon">ℹ️</div>
@@ -1687,6 +1854,22 @@
                             <li>Determinar si és una <strong>empresa</strong> o un <strong>particular</strong></li>
                         </ul>
 
+                        <h4>Clients estrangers de la UE: validació VIES</h4>
+                        <p>Si el client és d'un <strong>país estranger dins de la UE</strong>, hem de saber si el seu VAT és un número d'identificació fiscal <strong>intracomunitari</strong>, per assignar els <strong>grups comptables correctes (UE / EXT)</strong> a la seva fitxa de client.</p>
+                        <p>Ho comprovem al validador oficial VIES de la Comissió Europea:</p>
+
+                        <a href="https://ec.europa.eu/taxation_customs/vies/#/vat-validation" target="_blank" rel="noopener" class="external-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Validar VAT al VIES (Comissió Europea)
+                        </a>
+
+                        <p>Si el VAT és vàlid com a operador intracomunitari, a la <strong>fitxa de client</strong> de Navision hem de marcar el tick d'<strong>operador intracomunitari verificat (VIES)</strong>:</p>
+
+                        <div class="screenshot">
+                            <img src="img/vies-verificat-navision.png" alt="Ticks d'Operador Intracomunitari i Op. Intrac. Verificado a la fitxa de client de Navision">
+                            <div class="screenshot-caption">Camps "Operador Intracomunitario" i "Op. Intrac. Verificado" a la fitxa de client de Navision</div>
+                        </div>
+
                         <div class="callout callout-warning">
                             <div class="callout-icon">⚠️</div>
                             <div class="callout-content">
@@ -1698,7 +1881,7 @@
                 </div>
             </article>
 
-            <!-- PAS 6: VERIFICACIÓ DE L'IMPORT AMB NAVISION -->
+            <!-- PAS 6: CREAR LA COMANDA -->
             <article class="step-card" data-step="6">
                 <div class="step-card-header">
                     <div class="step-checkbox">
@@ -1709,10 +1892,67 @@
                     <div class="step-card-info">
                         <div class="step-card-meta">
                             <span class="step-number-badge">6</span>
-                            <span class="step-tag tag-document">Verificació</span>
+                            <span class="step-tag tag-platform">Navision</span>
                         </div>
-                        <h3 class="step-card-title">Verificar l'import amb Navision</h3>
-                        <p class="step-card-summary">L'import pagat ha de coincidir exactament amb el que indica Navision. És el control més important.</p>
+                        <h3 class="step-card-title">Crear la comanda i revisar-la</h3>
+                        <p class="step-card-summary">Verificar l'import amb Navision, clicar "Crear pedido" i revisar stock, fabricació i data d'enviament.</p>
+                    </div>
+                    <div class="step-toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+                <div class="step-card-body">
+                    <div class="step-card-content">
+                        <h4>Condició última abans de crear la comanda</h4>
+                        <p>Abans de clicar <strong>"Crear pedido"</strong>, cal comprovar sempre que <strong>l'import pagat pel client és exactament el mateix que indica Navision</strong>.</p>
+
+                        <div class="callout callout-warning">
+                            <div class="callout-icon">🚨</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Control crític</div>
+                                <div class="callout-text">Aquesta verificació és <strong>MOLT important</strong> i no es pot saltar mai. Una diferència entre l'import cobrat i el de Navision significa que alguna cosa ha fallat (descomptes mal aplicats, IVA incorrecte, error de passarel·la de pagament) i cal resoldre-la abans de crear la comanda.</div>
+                            </div>
+                        </div>
+
+                        <h4>La pantalla de comanda creada</h4>
+                        <p>Un cop cliquem <strong>"Crear pedido"</strong>, anem a la pantalla de la comanda creada, on podrem veure:</p>
+                        <ul>
+                            <li>El <strong>número de comanda generat a Navision</strong></li>
+                            <li>Les <strong>línies de la comanda</strong>, ja entrades i llançades</li>
+                        </ul>
+
+                        <h4>Revisar stock i fabricació</h4>
+                        <p>Cal revisar si tenim <strong>stock</strong> de tots els productes. Si és una comanda de <strong>nou producte</strong> que requereix activar fabricació, modifiquem el camp <strong>"Fecha envío"</strong> a la data aproximada en què tindrem el material a fàbrica per poder expedir-lo.</p>
+
+                        <h4>Avisar compres i producció</h4>
+                        <p>Un cop tenim la <strong>confirmació de pagament</strong> i la <strong>comanda creada</strong>, enviem un correu al departament de <strong>compres i producció</strong> perquè tinguin constància que es pot activar la fabricació d'aquell producte.</p>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-icon">📋</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Control de comandes en fabricació</div>
+                                <div class="callout-text">Podem portar el control de les comandes pendents que tenim a fabricació amb l'acció de Navision <strong>"Pantalla cobertura pedidos"</strong>.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PAS 7: ESCOLLIR TRANSPORTISTA -->
+            <article class="step-card" data-step="7">
+                <div class="step-card-header">
+                    <div class="step-checkbox">
+                        <svg class="step-checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <div class="step-card-info">
+                        <div class="step-card-meta">
+                            <span class="step-number-badge">7</span>
+                            <span class="step-tag tag-communication">Transport</span>
+                        </div>
+                        <h3 class="step-card-title">Escollir el transportista</h3>
+                        <p class="step-card-summary">Seleccionar el transportista correcte segons el destí i el pes de la mercaderia.</p>
                     </div>
                     <div class="step-toggle">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1721,15 +1961,110 @@
                 <div class="step-card-body">
                     <div class="step-card-content">
                         <h4>Què cal fer</h4>
-                        <p>Abans de donar la comanda per bona, cal comprovar sempre que <strong>l'import pagat pel client és exactament el mateix que indica Navision</strong>.</p>
+                        <p>Un cop tenim <strong>stock de tot</strong> i estem segurs que podem enviar la comanda, ens fixem en el <strong>transportista escollit</strong> per gestionar l'enviament. La tria depèn del destí i del pes de la mercaderia:</p>
 
-                        <div class="callout callout-warning">
-                            <div class="callout-icon">🚨</div>
+                        <table class="transport-table">
+                            <thead>
+                                <tr>
+                                    <th>Transportista</th>
+                                    <th>Quan s'utilitza</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MRW</td>
+                                    <td>Enviaments nacionals de menys de 80 kg</td>
+                                </tr>
+                                <tr>
+                                    <td>CBL</td>
+                                    <td>Enviaments península de més de 80 kg, i Portugal amb qualsevol pes</td>
+                                </tr>
+                                <tr>
+                                    <td>TRIAS</td>
+                                    <td>Barcelona i Balears amb qualsevol pes, i Andorra</td>
+                                </tr>
+                                <tr>
+                                    <td>FRANCE EXPEDITION</td>
+                                    <td>Enviaments a França</td>
+                                </tr>
+                                <tr>
+                                    <td>HELLMANN</td>
+                                    <td>Qualsevol altre enviament fora d'Espanya que no sigui França o Portugal</td>
+                                </tr>
+                                <tr>
+                                    <td>LUCHANA</td>
+                                    <td>Illes Canàries</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="callout callout-info">
+                            <div class="callout-icon">⚖️</div>
                             <div class="callout-content">
-                                <div class="callout-title">Control crític</div>
-                                <div class="callout-text">Aquesta verificació és <strong>MOLT important</strong> i no es pot saltar mai. Una diferència entre l'import cobrat i el de Navision significa que alguna cosa ha fallat (descomptes mal aplicats, IVA incorrecte, error de passarel·la de pagament) i cal resoldre-la abans d'enviar res.</div>
+                                <div class="callout-title">El pes és la clau als nacionals</div>
+                                <div class="callout-text">Per als enviaments nacionals, el límit dels <strong>80 kg</strong> determina si va per MRW o per CBL. El pes exacte de la comanda el veuràs a la pantalla de Dock Picking (pas 8).</div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PAS 8: PREPARACIÓ I PICKING -->
+            <article class="step-card" data-step="8">
+                <div class="step-card-header">
+                    <div class="step-checkbox">
+                        <svg class="step-checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <div class="step-card-info">
+                        <div class="step-card-meta">
+                            <span class="step-number-badge">8</span>
+                            <span class="step-tag tag-document">Magatzem</span>
+                        </div>
+                        <h3 class="step-card-title">Preparació: Dock Picking</h3>
+                        <p class="step-card-summary">Assignar magatzem i lots, enviar a SEGA i imprimir el picking per iniciar la preparació.</p>
+                    </div>
+                    <div class="step-toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+                <div class="step-card-body">
+                    <div class="step-card-content">
+                        <h4>Iniciar el procés de preparació</h4>
+                        <p>Un cop tinguem confirmat que podem enviar la comanda, iniciem el procés de preparació. A la pantalla de la comanda, cliquem l'acció <strong>"Dock Picking"</strong>, que ens portarà a una pantalla nova.</p>
+
+                        <h4>Què mostra la pantalla de Dock Picking</h4>
+                        <ul>
+                            <li>El <strong>pes de la comanda</strong> (molt important per als enviaments nacionals: determina si va per MRW o CBL)</li>
+                            <li>Les <strong>línies de producte</strong> que enviem i la quantitat que tenim en stock</li>
+                            <li>El <strong>disponible de cada magatzem</strong> i el total de cada magatzem</li>
+                        </ul>
+
+                        <h4>Assignar el magatzem</h4>
+                        <p>El magatzem pot ser <strong>FUERA</strong> o <strong>SEGA</strong>. El canviarem segons la ubicació real del material.</p>
+
+                        <h4>Línies en vermell: assignar lot</h4>
+                        <p>Si una línia surt <strong>en vermell</strong>, cal assignar-li lot. Com es fa:</p>
+                        <ul>
+                            <li>Prem <strong>Ctrl + L</strong> i després <strong>F4</strong></li>
+                            <li>Assigna el <strong>lot més antic disponible</strong></li>
+                        </ul>
+
+                        <div class="callout callout-warning">
+                            <div class="callout-icon">⚠️</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Lots caducats o en quarantena</div>
+                                <div class="callout-text">Si el lot més antic està <strong>caducat o en quarantena</strong>, no l'assignis: informa l'<strong>Elena o la Vero</strong> perquè el gestionin.</div>
+                            </div>
+                        </div>
+
+                        <h4>Finalitzar</h4>
+                        <p>Un cop tenim els lots assignats i seleccionat el magatzem correcte on es troba el material:</p>
+                        <ul>
+                            <li>Cliquem l'acció <strong>"ENVIAR SEGA"</strong></li>
+                            <li>Després, <strong>"Imprimir picking"</strong></li>
+                        </ul>
 
                         <div class="callout callout-info">
                             <div class="callout-icon">📌</div>
@@ -1761,8 +2096,14 @@
 
                     <div class="contact-card">
                         <span class="contact-org org-hellmann">Exportacions</span>
-                        <div class="contact-name">Enric i Xavier</div>
-                        <div class="contact-role">Suport en la tramitació de comandes web</div>
+                        <div class="contact-name">Xavier</div>
+                        <div class="contact-role">Creació d'adreces d'enviament noves (mai modificar adreces ja utilitzades)</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <span class="contact-org org-bring">Qualitat</span>
+                        <div class="contact-name">Elena i Vero</div>
+                        <div class="contact-role">Gestió de lots caducats o en quarantena</div>
                     </div>
                 </div>
             </section>
@@ -1788,7 +2129,7 @@
                 </div>
                 <div>
                     <div class="progress-info-label">Passos completats</div>
-                    <div class="progress-info-value"><span id="completedCount">0</span> de 6</div>
+                    <div class="progress-info-value"><span id="completedCount">0</span> de 8</div>
                 </div>
             </div>
 
@@ -1798,7 +2139,9 @@
                 <li><a href="#" class="step-jump" data-step-jump="3"><span class="step-jump-number"><span>3</span></span>Imprimir còpies</a></li>
                 <li><a href="#" class="step-jump" data-step-jump="4"><span class="step-jump-number"><span>4</span></span>Precomanda</a></li>
                 <li><a href="#" class="step-jump" data-step-jump="5"><span class="step-jump-number"><span>5</span></span>Fitxa de client</a></li>
-                <li><a href="#" class="step-jump" data-step-jump="6"><span class="step-jump-number"><span>6</span></span>Import Navision</a></li>
+                <li><a href="#" class="step-jump" data-step-jump="6"><span class="step-jump-number"><span>6</span></span>Crear comanda</a></li>
+                <li><a href="#" class="step-jump" data-step-jump="7"><span class="step-jump-number"><span>7</span></span>Transportista</a></li>
+                <li><a href="#" class="step-jump" data-step-jump="8"><span class="step-jump-number"><span>8</span></span>Dock Picking</a></li>
             </ul>
 
             <button class="reset-btn" id="resetBtn">
@@ -1895,7 +2238,7 @@
          * Clau específica per Noruega: cada país té el seu progrés.
          */
         const STORAGE_KEY = 'amenities-comandes-web-progress';
-        const TOTAL_STEPS = 6;
+        const TOTAL_STEPS = 8;
 
         function loadProgress() {
             try {
