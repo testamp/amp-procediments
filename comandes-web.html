@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comandes WEB · Amenities Pack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800;9..144,900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           SISTEMA DE DISSENY
+           Mateixa base que UK però amb el color Noruega
+           (blau profund) com a accent principal de la pàgina.
+        ============================================ */
+        :root {
+            --color-brand: #1a4d4a;
+            --color-brand-light: #2d6e69;
+            --color-brand-soft: #e8f1f0;
+            --color-accent: #ed8936;
+            --color-accent-light: #f6ad55;
+            --color-accent-soft: #fef5e7;
+            
+            /* Color específic per a Noruega (blau marí), 
+               que serà l'accent d'aquesta pàgina. */
+            --color-noruega: #6b21a8;
+            --color-noruega-dark: #4c1d95;
+            --color-noruega-soft: #e9d8fd;
+            --color-noruega-bg: #faf5ff;
+            
+            --color-text: #1a202c;
+            --color-text-soft: #4a5568;
+            --color-text-muted: #718096;
+            --color-bg: #fdfcfb;
+            --color-bg-card: #ffffff;
+            --color-border: #e2e8f0;
+            
+            --color-success: #38a169;
+            --color-success-soft: #c6f6d5;
+            
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            
+            --radius-sm: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1.25rem;
+            --radius-xl: 2rem;
+            
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 32px rgba(26, 77, 74, 0.12);
+            --shadow-xl: 0 24px 48px rgba(26, 77, 74, 0.18);
+            
+            --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(107, 33, 168, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(26, 77, 74, 0.04) 0%, transparent 40%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           CAPÇALERA
+        ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(253, 252, 251, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            border-bottom-color: var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: var(--space-4) var(--space-6);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-6);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 800;
+            font-size: 1.125rem;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            background: var(--color-brand);
+            color: white;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .logo:hover .logo-mark {
+            transform: rotate(-8deg) scale(1.05);
+        }
+
+        .nav {
+            display: flex;
+            gap: var(--space-2);
+            align-items: center;
+        }
+
+        .nav-link {
+            padding: var(--space-2) var(--space-4);
+            color: var(--color-text-soft);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-brand);
+            background: var(--color-brand-soft);
+        }
+
+        .nav-link.active {
+            color: var(--color-noruega);
+            background: var(--color-noruega-bg);
+        }
+
+        /* ============================================
+           BREADCRUMB
+        ============================================ */
+        .breadcrumb {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: calc(80px + var(--space-6)) var(--space-6) 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        .breadcrumb a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--color-brand);
+        }
+
+        .breadcrumb-current {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           HERO DE PÀGINA NORUEGA
+        ============================================ */
+        .page-hero {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: var(--space-8) var(--space-6) var(--space-12);
+        }
+
+        .page-hero-card {
+            background: linear-gradient(135deg, var(--color-noruega) 0%, var(--color-noruega-dark) 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--space-12);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .page-hero-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-hero-card::after {
+            content: '🛒';
+            position: absolute;
+            font-size: 20rem;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.08;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .page-hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: rgba(255,255,255,0.15);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+            backdrop-filter: blur(10px);
+        }
+
+        .page-hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-4);
+        }
+
+        .page-hero-subtitle {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-bottom: var(--space-6);
+        }
+
+        .quick-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+        }
+
+        .quick-info-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+        }
+
+        .quick-info-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            margin-bottom: var(--space-1);
+            font-weight: 600;
+        }
+
+        .quick-info-value {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           SECCIÓ DOCUMENTS NECESSARIS
+        ============================================ */
+        .docs-quick-access {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-6) var(--space-12);
+        }
+
+        .docs-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            border: 2px solid var(--color-noruega-soft);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .docs-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(107, 33, 168, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .docs-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+            position: relative;
+        }
+
+        .docs-card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-noruega-bg);
+            color: var(--color-noruega);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .docs-card-eyebrow {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-noruega);
+            margin-bottom: 2px;
+        }
+
+        .docs-card-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--color-text);
+            line-height: 1.2;
+        }
+
+        .docs-card-description {
+            color: var(--color-text-soft);
+            margin-bottom: var(--space-6);
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .docs-quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-3);
+            margin-bottom: var(--space-6);
+            position: relative;
+        }
+
+        .docs-quick-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            background: var(--color-bg);
+            border: 1.5px solid var(--color-border);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--color-text);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .docs-quick-item:hover {
+            background: white;
+            border-color: var(--color-noruega);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .docs-quick-icon {
+            width: 36px;
+            height: 36px;
+            background: white;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-noruega);
+            flex-shrink: 0;
+            border: 1px solid var(--color-border);
+        }
+
+        .docs-quick-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .docs-quick-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--color-text);
+            margin-bottom: 2px;
+        }
+
+        .docs-quick-format {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+        }
+
+        .docs-quick-arrow {
+            color: var(--color-text-muted);
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .docs-quick-item:hover .docs-quick-arrow {
+            color: var(--color-noruega);
+            transform: translateY(2px);
+        }
+
+        .docs-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--color-brand);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .docs-card-link:hover {
+            color: var(--color-brand-light);
+            gap: var(--space-3);
+        }
+
+        /* ============================================
+           LAYOUT PRINCIPAL: contingut + sidebar
+        ============================================ */
+        .main-layout {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-6) var(--space-16);
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: var(--space-12);
+            align-items: start;
+        }
+
+        /* ============================================
+           SIDEBAR DE PROGRÉS
+        ============================================ */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-border);
+        }
+
+        .sidebar-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .progress-circle-wrapper {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-6);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .progress-circle {
+            width: 70px;
+            height: 70px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .progress-circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .progress-circle-bg {
+            fill: none;
+            stroke: var(--color-border);
+            stroke-width: 6;
+        }
+
+        .progress-circle-fill {
+            fill: none;
+            stroke: var(--color-noruega);
+            stroke-width: 6;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.6s ease;
+        }
+
+        .progress-circle-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--color-noruega);
+            font-family: var(--font-display);
+        }
+
+        .progress-info-label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+            margin-bottom: var(--space-1);
+        }
+
+        .progress-info-value {
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .step-jumps {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
+
+        .step-jump {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--color-text-soft);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .step-jump:hover {
+            background: var(--color-noruega-bg);
+            color: var(--color-noruega);
+        }
+
+        .step-jump-number {
+            width: 24px;
+            height: 24px;
+            background: var(--color-border);
+            color: var(--color-text-muted);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .step-jump.completed .step-jump-number {
+            background: var(--color-success);
+            color: white;
+        }
+
+        .step-jump.completed .step-jump-number::before {
+            content: '✓';
+        }
+
+        .step-jump.completed .step-jump-number > span {
+            display: none;
+        }
+
+        .step-jump.completed {
+            color: var(--color-text-muted);
+            text-decoration: line-through;
+            text-decoration-color: var(--color-text-muted);
+            opacity: 0.7;
+        }
+
+        .reset-btn {
+            margin-top: var(--space-4);
+            padding-top: var(--space-4);
+            border-top: 1px solid var(--color-border);
+            background: none;
+            border-bottom: none;
+            border-left: none;
+            border-right: none;
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            transition: color 0.2s;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .reset-btn:hover {
+            color: var(--color-noruega);
+        }
+
+        /* ============================================
+           CONTINGUT PRINCIPAL
+        ============================================ */
+        .content {
+            min-width: 0;
+        }
+
+        .section-header-internal {
+            margin-bottom: var(--space-8);
+        }
+
+        .section-header-internal .section-eyebrow {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-noruega);
+            margin-bottom: var(--space-2);
+        }
+
+        .section-header-internal .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-3);
+        }
+
+        .section-header-internal .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--color-text-soft);
+            line-height: 1.6;
+        }
+
+        /* Targetes de pas */
+        .step-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-4);
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--color-border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-noruega-soft);
+        }
+
+        .step-card.completed {
+            background: var(--color-success-soft);
+            border-color: var(--color-success);
+            opacity: 0.85;
+        }
+
+        .step-card.completed:hover {
+            opacity: 1;
+        }
+
+        .step-card-header {
+            padding: var(--space-6);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .step-checkbox {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            margin-top: 2px;
+        }
+
+        .step-checkbox:hover {
+            border-color: var(--color-noruega);
+            transform: scale(1.05);
+        }
+
+        .step-card.completed .step-checkbox {
+            background: var(--color-success);
+            border-color: var(--color-success);
+        }
+
+        .step-checkbox-icon {
+            width: 16px;
+            height: 16px;
+            color: white;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.2s ease;
+        }
+
+        .step-card.completed .step-checkbox-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .step-card-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .step-card-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-2);
+        }
+
+        .step-number-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--color-noruega);
+            color: white;
+            border-radius: 50%;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 0.85rem;
+        }
+
+        .step-card.completed .step-number-badge {
+            background: var(--color-success);
+        }
+
+        .step-tag {
+            padding: 2px var(--space-2);
+            background: var(--color-noruega-bg);
+            color: var(--color-noruega);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .step-tag.tag-document {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .step-tag.tag-communication {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        .step-tag.tag-platform {
+            background: var(--color-noruega-bg);
+            color: var(--color-noruega);
+        }
+
+        .step-card-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
+            line-height: 1.3;
+        }
+
+        .step-card.completed .step-card-title {
+            text-decoration: line-through;
+            color: var(--color-text-muted);
+        }
+
+        .step-card-summary {
+            color: var(--color-text-soft);
+            font-size: 0.95rem;
+        }
+
+        .step-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--color-bg);
+            border-radius: 50%;
+            color: var(--color-text-muted);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .step-card.expanded .step-toggle {
+            background: var(--color-noruega);
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        .step-card-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .step-card.expanded .step-card-body {
+            max-height: 5000px;
+        }
+
+        .step-card-content {
+            padding: 0 var(--space-6) var(--space-6);
+            border-top: 1px solid var(--color-border);
+            padding-top: var(--space-6);
+        }
+
+        .step-card-content h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: var(--space-4) 0 var(--space-3);
+            color: var(--color-text);
+        }
+
+        .step-card-content h4:first-child {
+            margin-top: 0;
+        }
+
+        .step-card-content p {
+            color: var(--color-text-soft);
+            margin-bottom: var(--space-3);
+        }
+
+        .step-card-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: var(--space-4);
+        }
+
+        .step-card-content ul li {
+            position: relative;
+            padding-left: var(--space-6);
+            margin-bottom: var(--space-2);
+            color: var(--color-text-soft);
+        }
+
+        .step-card-content ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-noruega);
+            font-weight: 700;
+        }
+
+        .step-card-content strong {
+            color: var(--color-text);
+            font-weight: 700;
+        }
+
+        /* Callouts */
+        .callout {
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            margin: var(--space-4) 0;
+            display: flex;
+            gap: var(--space-3);
+            align-items: flex-start;
+        }
+
+        .callout-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .callout-content {
+            flex: 1;
+        }
+
+        .callout-title {
+            font-weight: 700;
+            margin-bottom: var(--space-1);
+        }
+
+        .callout-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .callout-warning {
+            background: #fef5e7;
+            border: 1px solid #f6ad55;
+        }
+
+        .callout-warning .callout-title { color: #c05621; }
+        .callout-warning .callout-text { color: #7c2d12; }
+
+        .callout-info {
+            background: var(--color-noruega-bg);
+            border: 1px solid var(--color-noruega-soft);
+        }
+
+        .callout-info .callout-title { color: var(--color-noruega-dark); }
+        .callout-info .callout-text { color: var(--color-noruega-dark); }
+
+        .callout-tip {
+            background: var(--color-success-soft);
+            border: 1px solid var(--color-success);
+        }
+
+        .callout-tip .callout-title { color: #22543d; }
+        .callout-tip .callout-text { color: #22543d; }
+
+        .external-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-4);
+            background: var(--color-brand);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            margin: var(--space-2) 0;
+        }
+
+        .external-link:hover {
+            background: var(--color-brand-light);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Blocs especials per a les cinc cartes obligatòries */
+        .cartes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-3);
+            margin: var(--space-4) 0;
+        }
+
+        .carta-mini {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-3);
+            background: var(--color-noruega-bg);
+            border: 1px solid var(--color-noruega-soft);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--color-text);
+            transition: all 0.2s ease;
+        }
+
+        .carta-mini:hover {
+            background: white;
+            border-color: var(--color-noruega);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .carta-mini-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-noruega);
+            flex-shrink: 0;
+            border: 1px solid var(--color-noruega-soft);
+        }
+
+        .carta-mini-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        /* ============================================
+           SECCIÓ BONES PRÀCTIQUES
+        ============================================ */
+        .best-practices {
+            margin-top: var(--space-16);
+        }
+
+        .practices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-6);
+        }
+
+        .practice-card {
+            background: linear-gradient(135deg, var(--color-accent-soft) 0%, white 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--space-8);
+            border: 2px solid var(--color-accent-light);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .practice-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .practice-card::before {
+            content: attr(data-number);
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            font-family: var(--font-display);
+            font-size: 9rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            opacity: 0.12;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .practice-card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-accent);
+            color: white;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-4);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .practice-card-eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            margin-bottom: var(--space-2);
+            position: relative;
+        }
+
+        .practice-card-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-text);
+            line-height: 1.3;
+            margin-bottom: var(--space-3);
+            position: relative;
+        }
+
+        .practice-card-text {
+            color: var(--color-text-soft);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .practice-card-text strong {
+            color: var(--color-text);
+            font-weight: 700;
+        }
+
+        /* ============================================
+           CONTACTES
+        ============================================ */
+        .contacts-section {
+            margin-top: var(--space-16);
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            border: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .contact-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            border-color: var(--color-noruega-soft);
+        }
+
+        .contact-org {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-1) var(--space-3);
+            background: var(--color-noruega-bg);
+            color: var(--color-noruega);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            align-self: flex-start;
+            margin-bottom: var(--space-2);
+        }
+
+        .contact-org.org-hellmann {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .contact-org.org-bring {
+            background: #e6fffa;
+            color: #234e52;
+        }
+
+        .contact-org.org-maske {
+            background: #fed7e2;
+            color: #97266d;
+        }
+
+        .contact-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .contact-role {
+            color: var(--color-text-soft);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-3);
+        }
+
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--color-brand);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            word-break: break-all;
+            transition: color 0.2s;
+        }
+
+        .contact-email:hover {
+            color: var(--color-noruega);
+            text-decoration: underline;
+        }
+
+        /* ============================================
+           PEU DE PÀGINA
+        ============================================ */
+        .footer {
+            background: var(--color-text);
+            color: white;
+            padding: var(--space-16) var(--space-6) var(--space-8);
+            margin-top: var(--space-16);
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-8);
+            margin-bottom: var(--space-12);
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+            font-weight: 800;
+            font-size: 1.125rem;
+        }
+
+        .footer-brand .logo-mark {
+            background: var(--color-accent);
+        }
+
+        .footer-tagline {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 320px;
+        }
+
+        .footer-col-title {
+            font-weight: 700;
+            margin-bottom: var(--space-4);
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: var(--space-6);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Botó Tornar a dalt */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--space-6);
+            right: var(--space-6);
+            width: 50px;
+            height: 50px;
+            background: var(--color-brand);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 50;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            background: var(--color-brand-light);
+            transform: translateY(-4px);
+        }
+
+        /* Celebració */
+        .celebration {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-200px);
+            background: var(--color-success);
+            color: white;
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            box-shadow: var(--shadow-xl);
+            z-index: 200;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .celebration.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 968px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+                order: -1;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .page-hero-card {
+                padding: var(--space-8);
+            }
+
+            .page-hero-card::after {
+                font-size: 12rem;
+            }
+
+            .docs-quick-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .practices-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav {
+                display: none;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .step-card-header {
+                padding: var(--space-4);
+            }
+
+            .step-card-content {
+                padding-left: var(--space-4);
+                padding-right: var(--space-4);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CAPÇALERA -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-mark">A</div>
+                <span>Amenities Pack <span style="color: var(--color-text-muted); font-weight: 500;">· Procediments</span></span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html#paisos" class="nav-link">Procediments</a>
+                <a href="comandes-web.html" class="nav-link active">Comandes WEB</a>
+                <a href="recursos.html" class="nav-link">Recursos</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <nav class="breadcrumb" aria-label="Navegació">
+        <a href="index.html">Inici</a>
+        <span>›</span>
+        <a href="index.html#paisos">Procediments</a>
+        <span>›</span>
+        <span class="breadcrumb-current">Comandes WEB</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="page-hero-card">
+            <div class="page-hero-content">
+                <div class="page-hero-eyebrow">
+                    🛒 Gestió interna
+                </div>
+                <h1 class="page-hero-title">Comandes WEB</h1>
+                <p class="page-hero-subtitle">
+                    Procediment per tramitar les comandes que entren per la botiga web. Inclou la verificació del pagament, la coordinació amb administració, la revisió de dades a la precomanda i la validació final amb Navision.
+                </p>
+
+                <div class="quick-info">
+                    <div class="quick-info-card">
+                        <div class="quick-info-label">Canal d'entrada</div>
+                        <div class="quick-info-value">Pantalla de preacceptació</div>
+                    </div>
+                    <div class="quick-info-card">
+                        <div class="quick-info-label">Mètodes de pagament</div>
+                        <div class="quick-info-value">Targeta · Transferència</div>
+                    </div>
+                    <div class="quick-info-card">
+                        <div class="quick-info-label">Registre de pagaments</div>
+                        <div class="quick-info-value">Eduard (Administració)</div>
+                    </div>
+                    <div class="quick-info-card">
+                        <div class="quick-info-label">Sistema de gestió</div>
+                        <div class="quick-info-value">Navision</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- LAYOUT PRINCIPAL -->
+    <div class="main-layout">
+        
+        <!-- CONTINGUT PRINCIPAL -->
+        <main class="content">
+            <div class="section-header-internal">
+                <span class="section-eyebrow">Procediment pas a pas</span>
+                <h2 class="section-title">Els 6 passos per tramitar una comanda web</h2>
+                <p class="section-subtitle">
+                    Marca cada pas a mesura que el completis. El teu progrés es guarda automàticament al teu navegador. Pots clicar a qualsevol pas per expandir el detall.
+                </p>
+            </div>
+
+            <!-- PAS 1: RECEPCIÓ DE LA COMANDA -->
+            <article class="step-card" data-step="1">
+                <div class="step-card-header">
+                    <div class="step-checkbox">
+                        <svg class="step-checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <div class="step-card-info">
+                        <div class="step-card-meta">
+                            <span class="step-number-badge">1</span>
+                            <span class="step-tag tag-platform">Recepció</span>
+                        </div>
+                        <h3 class="step-card-title">Recepció de la comanda web</h3>
+                        <p class="step-card-summary">Les comandes entren a la pantalla de preacceptació i es reben al correu de comandes web.</p>
+                    </div>
+                    <div class="step-toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+                <div class="step-card-body">
+                    <div class="step-card-content">
+                        <h4>Què cal saber</h4>
+                        <p>Les comandes web entren per dos canals simultanis:</p>
+                        <ul>
+                            <li>La <strong>pantalla de preacceptació de comandes</strong>, on es gestionen</li>
+                            <li>El <strong>correu de comandes web</strong>, on es rep la notificació de cada comanda nova</li>
+                        </ul>
+
+                        <div class="callout callout-info">
+                            <div class="callout-icon">ℹ️</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Punt de partida</div>
+                                <div class="callout-text">Cap comanda s'aprova directament des d'aquí. Abans de processar res, cal verificar el mètode i l'estat del pagament (pas 2).</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PAS 2: VERIFICAR EL PAGAMENT -->
+            <article class="step-card" data-step="2">
+                <div class="step-card-header">
+                    <div class="step-checkbox">
+                        <svg class="step-checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <div class="step-card-info">
+                        <div class="step-card-meta">
+                            <span class="step-number-badge">2</span>
+                            <span class="step-tag tag-document">Pagament</span>
+                        </div>
+                        <h3 class="step-card-title">Verificar el mètode de pagament</h3>
+                        <p class="step-card-summary">Targeta es pot processar directament; transferència només amb justificant o confirmació de l'Eduard.</p>
+                    </div>
+                    <div class="step-toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+                <div class="step-card-body">
+                    <div class="step-card-content">
+                        <h4>Segons el mètode de pagament</h4>
+                        <ul>
+                            <li><strong>Targeta:</strong> pots verificar i processar la comanda directament</li>
+                            <li><strong>Transferència bancària:</strong> NO es pot aprovar d'entrada</li>
+                        </ul>
+
+                        <h4>Quan es pot aprovar una transferència?</h4>
+                        <p>Una comanda pagada per transferència només es pot aprovar quan es compleix <strong>una</strong> d'aquestes dues condicions:</p>
+                        <ul>
+                            <li>El client ens envia el <strong>justificant de pagament</strong></li>
+                            <li>L'<strong>Eduard ens confirma la recepció</strong> del pagament</li>
+                        </ul>
+
+                        <div class="callout callout-warning">
+                            <div class="callout-icon">⚠️</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Mai aprovar sense confirmació</div>
+                                <div class="callout-text">No s'aprova cap comanda per transferència sense justificant del client o confirmació de l'Eduard. Aprovar sense cobrar és enviar mercaderia gratis.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PAS 3: IMPRIMIR I DISTRIBUIR CÒPIES -->
+            <article class="step-card" data-step="3">
+                <div class="step-card-header">
+                    <div class="step-checkbox">
+                        <svg class="step-checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <div class="step-card-info">
+                        <div class="step-card-meta">
+                            <span class="step-number-badge">3</span>
+                            <span class="step-tag tag-document">Documentació</span>
+                        </div>
+                        <h3 class="step-card-title">Imprimir i distribuir les dues còpies</h3>
+                        <p class="step-card-summary">Una còpia per al seguiment intern i una per a l'Eduard per registrar el pagament.</p>
+                    </div>
+                    <div class="step-toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+                <div class="step-card-body">
+                    <div class="step-card-content">
+                        <h4>Què cal fer</h4>
+                        <p>Per cada comanda, s'imprimeixen <strong>dues pàgines</strong> amb destins diferents:</p>
+                        <ul>
+                            <li><strong>Còpia 1 (per a nosaltres):</strong> hi anotem l'estat de la comanda — <strong>pendent</strong> o <strong>enviada</strong>. És el nostre control de seguiment.</li>
+                            <li><strong>Còpia 2 (per a l'Eduard):</strong> li permet registrar el pagament al client que toca, comprovant l'import rebut per transferència o targeta.</li>
+                        </ul>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-icon">✓</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Per què dues còpies</div>
+                                <div class="callout-text">Aquest sistema garanteix que comanda i cobrament avancen en paral·lel: nosaltres controlem l'enviament i administració controla el pagament. Si una de les dues còpies no es lliura, el circuit es trenca.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PAS 4: PANTALLA DE PRECOMANDA -->
+            <article class="step-card" data-step="4">
+                <div class="step-card-header">
+                    <div class="step-checkbox">
+                        <svg class="step-checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <div class="step-card-info">
+                        <div class="step-card-meta">
+                            <span class="step-number-badge">4</span>
+                            <span class="step-tag tag-platform">Plataforma</span>
+                        </div>
+                        <h3 class="step-card-title">Revisar la pantalla de precomanda</h3>
+                        <p class="step-card-summary">Comparar les dades de facturació i enviament registrades amb les que entren amb la comanda.</p>
+                    </div>
+                    <div class="step-toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+                <div class="step-card-body">
+                    <div class="step-card-content">
+                        <h4>Què cal fer</h4>
+                        <p>Un cop confirmat que es pot procedir amb la comanda, anem a la <strong>pantalla de precomanda</strong>, on hi apareixen:</p>
+                        <ul>
+                            <li>Les <strong>dades de facturació</strong> del client</li>
+                            <li>Les <strong>dades d'enviament</strong></li>
+                            <li>Una <strong>comparativa</strong> entre les dades que tenim registrades i les que entren amb la comanda</li>
+                        </ul>
+
+                        <h4>Camps en vermell</h4>
+                        <p>Si algun camp surt <strong>en vermell</strong>, indica una discrepància entre les dades registrades i les noves. Cal revisar si s'han de modificar o no, <strong>segons el que ens indiqui el client</strong>.</p>
+
+                        <div class="callout callout-info">
+                            <div class="callout-icon">ℹ️</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Vermell no vol dir error</div>
+                                <div class="callout-text">Un camp en vermell és un avís de diferència, no necessàriament un error. El client pot haver canviat d'adreça legítimament. En cas de dubte, confirma amb el client abans de modificar res.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PAS 5: CLIENT NOU O EXISTENT -->
+            <article class="step-card" data-step="5">
+                <div class="step-card-header">
+                    <div class="step-checkbox">
+                        <svg class="step-checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <div class="step-card-info">
+                        <div class="step-card-meta">
+                            <span class="step-number-badge">5</span>
+                            <span class="step-tag tag-document">Fitxa client</span>
+                        </div>
+                        <h3 class="step-card-title">Client nou o client existent</h3>
+                        <p class="step-card-summary">Si el client és nou, cal crear la fitxa i validar el CIF/VAT abans de continuar.</p>
+                    </div>
+                    <div class="step-toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+                <div class="step-card-body">
+                    <div class="step-card-content">
+                        <h4>Client existent</h4>
+                        <p>Si el client ja existeix al sistema, només cal verificar que les dades coincideixen (pas anterior) i continuar amb la tramitació.</p>
+
+                        <h4>Client nou</h4>
+                        <p>Si el client és nou, abans de tramitar la comanda cal:</p>
+                        <ul>
+                            <li><strong>Crear la fitxa de client</strong> al sistema</li>
+                            <li>Verificar que el <strong>CIF/VAT</strong> que ha indicat és <strong>vàlid</strong></li>
+                            <li>Determinar si és una <strong>empresa</strong> o un <strong>particular</strong></li>
+                        </ul>
+
+                        <div class="callout callout-warning">
+                            <div class="callout-icon">⚠️</div>
+                            <div class="callout-content">
+                                <div class="callout-title">CIF/VAT sempre validat</div>
+                                <div class="callout-text">Un CIF o VAT invàlid genera problemes de facturació i fiscals més endavant. Valida'l sempre abans de crear la fitxa, no després.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PAS 6: VERIFICACIÓ DE L'IMPORT AMB NAVISION -->
+            <article class="step-card" data-step="6">
+                <div class="step-card-header">
+                    <div class="step-checkbox">
+                        <svg class="step-checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <div class="step-card-info">
+                        <div class="step-card-meta">
+                            <span class="step-number-badge">6</span>
+                            <span class="step-tag tag-document">Verificació</span>
+                        </div>
+                        <h3 class="step-card-title">Verificar l'import amb Navision</h3>
+                        <p class="step-card-summary">L'import pagat ha de coincidir exactament amb el que indica Navision. És el control més important.</p>
+                    </div>
+                    <div class="step-toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+                <div class="step-card-body">
+                    <div class="step-card-content">
+                        <h4>Què cal fer</h4>
+                        <p>Abans de donar la comanda per bona, cal comprovar sempre que <strong>l'import pagat pel client és exactament el mateix que indica Navision</strong>.</p>
+
+                        <div class="callout callout-warning">
+                            <div class="callout-icon">🚨</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Control crític</div>
+                                <div class="callout-text">Aquesta verificació és <strong>MOLT important</strong> i no es pot saltar mai. Una diferència entre l'import cobrat i el de Navision significa que alguna cosa ha fallat (descomptes mal aplicats, IVA incorrecte, error de passarel·la de pagament) i cal resoldre-la abans d'enviar res.</div>
+                            </div>
+                        </div>
+
+                        <div class="callout callout-info">
+                            <div class="callout-icon">📌</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Guia en construcció</div>
+                                <div class="callout-text">Aquesta és la versió bàsica del procediment. S'hi aniran afegint més detalls i casos especials progressivament.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CONTACTES -->
+            <section class="contacts-section" id="contactes">
+                <div class="section-header-internal">
+                    <span class="section-eyebrow">Directori de contactes</span>
+                    <h2 class="section-title">Persones clau del procediment</h2>
+                    <p class="section-subtitle">
+                        Persones de referència per a la tramitació de comandes web.
+                    </p>
+                </div>
+
+                <div class="contacts-grid">
+                    <div class="contact-card">
+                        <span class="contact-org">Administració</span>
+                        <div class="contact-name">Eduard</div>
+                        <div class="contact-role">Registre de pagaments · Confirmació de transferències i targetes</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <span class="contact-org org-hellmann">Exportacions</span>
+                        <div class="contact-name">Enric i Xavier</div>
+                        <div class="contact-role">Suport en la tramitació de comandes web</div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- SIDEBAR DE PROGRÉS -->
+        <aside class="sidebar">
+            <h3 class="sidebar-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                El teu progrés
+            </h3>
+
+            <div class="progress-circle-wrapper">
+                <div class="progress-circle">
+                    <svg width="70" height="70" viewBox="0 0 70 70">
+                        <circle class="progress-circle-bg" cx="35" cy="35" r="30"/>
+                        <circle class="progress-circle-fill" cx="35" cy="35" r="30" 
+                                stroke-dasharray="188.5" stroke-dashoffset="188.5" 
+                                id="progressFill"/>
+                    </svg>
+                    <div class="progress-circle-text" id="progressText">0%</div>
+                </div>
+                <div>
+                    <div class="progress-info-label">Passos completats</div>
+                    <div class="progress-info-value"><span id="completedCount">0</span> de 6</div>
+                </div>
+            </div>
+
+            <ul class="step-jumps" id="stepJumps">
+                <li><a href="#" class="step-jump" data-step-jump="1"><span class="step-jump-number"><span>1</span></span>Recepció comanda</a></li>
+                <li><a href="#" class="step-jump" data-step-jump="2"><span class="step-jump-number"><span>2</span></span>Verificar pagament</a></li>
+                <li><a href="#" class="step-jump" data-step-jump="3"><span class="step-jump-number"><span>3</span></span>Imprimir còpies</a></li>
+                <li><a href="#" class="step-jump" data-step-jump="4"><span class="step-jump-number"><span>4</span></span>Precomanda</a></li>
+                <li><a href="#" class="step-jump" data-step-jump="5"><span class="step-jump-number"><span>5</span></span>Fitxa de client</a></li>
+                <li><a href="#" class="step-jump" data-step-jump="6"><span class="step-jump-number"><span>6</span></span>Import Navision</a></li>
+            </ul>
+
+            <button class="reset-btn" id="resetBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                Reiniciar progrés
+            </button>
+        </aside>
+    </div>
+
+    <!-- CELEBRACIÓ -->
+    <div class="celebration" id="celebration">
+        <span style="font-size: 1.5rem;">🎉</span>
+        <span>Procediment completat! Bona feina.</span>
+    </div>
+
+    <!-- BOTÓ TORNAR A DALT -->
+    <button class="back-to-top" id="backToTop" aria-label="Tornar a dalt">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- PEU DE PÀGINA -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand">
+                    <div class="logo-mark">A</div>
+                    <span>Amenities Pack</span>
+                </div>
+                <p class="footer-tagline">
+                    Plataforma interna del departament d'exportacions. Una eina feta per a l'equip per garantir que cada enviament arriba al destí sense incidències documentals.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="footer-col-title">Procediments</h4>
+                <ul class="footer-links">
+                    <li><a href="uk.html">Regne Unit</a></li>
+                    <li><a href="noruega.html">Noruega</a></li>
+                    <li><a href="comandes-web.html">Comandes WEB</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-col-title">Recursos</h4>
+                <ul class="footer-links">
+                    <li><a href="recursos.html">Plantilles</a></li>
+                    <li><a href="#contactes">Contactes</a></li>
+                    <li><a href="#">Glossari</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-col-title">Suport</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Preguntes freqüents</a></li>
+                    <li><a href="#">Contacte</a></li>
+                    <li><a href="#">Suggeriments</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Amenities Pack · Plataforma interna · Versió 1.1 · Maig 2026</p>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT
+    ============================================ -->
+    <script>
+        const header = document.getElementById('header');
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            if (window.scrollY > 600) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        /**
+         * SISTEMA DE CHECKLIST PERSISTENT
+         * Clau específica per Noruega: cada país té el seu progrés.
+         */
+        const STORAGE_KEY = 'amenities-comandes-web-progress';
+        const TOTAL_STEPS = 6;
+
+        function loadProgress() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                return saved ? JSON.parse(saved) : {};
+            } catch (e) {
+                console.error('Error carregant el progrés:', e);
+                return {};
+            }
+        }
+
+        function saveProgress(progress) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+            } catch (e) {
+                console.error('Error guardant el progrés:', e);
+            }
+        }
+
+        function updateUI() {
+            const progress = loadProgress();
+            const completedSteps = Object.keys(progress).filter(k => progress[k]).length;
+            
+            document.querySelectorAll('.step-card').forEach(card => {
+                const stepNum = card.dataset.step;
+                if (progress[stepNum]) {
+                    card.classList.add('completed');
+                } else {
+                    card.classList.remove('completed');
+                }
+            });
+
+            document.querySelectorAll('.step-jump').forEach(jump => {
+                const stepNum = jump.dataset.stepJump;
+                if (progress[stepNum]) {
+                    jump.classList.add('completed');
+                } else {
+                    jump.classList.remove('completed');
+                }
+            });
+
+            const percentage = Math.round((completedSteps / TOTAL_STEPS) * 100);
+            const circumference = 188.5;
+            const offset = circumference - (circumference * percentage / 100);
+            
+            document.getElementById('progressFill').style.strokeDashoffset = offset;
+            document.getElementById('progressText').textContent = percentage + '%';
+            document.getElementById('completedCount').textContent = completedSteps;
+
+            if (completedSteps === TOTAL_STEPS) {
+                showCelebration();
+            }
+        }
+
+        function showCelebration() {
+            const celebration = document.getElementById('celebration');
+            celebration.classList.add('show');
+            setTimeout(() => {
+                celebration.classList.remove('show');
+            }, 3500);
+        }
+
+        function toggleStep(stepNum) {
+            const progress = loadProgress();
+            progress[stepNum] = !progress[stepNum];
+            saveProgress(progress);
+            updateUI();
+        }
+
+        document.querySelectorAll('.step-card').forEach(card => {
+            const cardHeader = card.querySelector('.step-card-header');
+            const checkbox = card.querySelector('.step-checkbox');
+            const stepNum = card.dataset.step;
+
+            checkbox.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleStep(stepNum);
+            });
+
+            cardHeader.addEventListener('click', (e) => {
+                if (e.target.closest('.step-checkbox')) return;
+                card.classList.toggle('expanded');
+            });
+        });
+
+        document.querySelectorAll('.step-jump').forEach(jump => {
+            jump.addEventListener('click', (e) => {
+                e.preventDefault();
+                const stepNum = jump.dataset.stepJump;
+                const card = document.querySelector(`.step-card[data-step="${stepNum}"]`);
+                if (card) {
+                    card.classList.add('expanded');
+                    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            if (confirm('Estàs segur que vols reiniciar el teu progrés? Aquesta acció esborrarà totes les marques de passos completats.')) {
+                localStorage.removeItem(STORAGE_KEY);
+                updateUI();
+            }
+        });
+
+        updateUI();
+
+        console.log('%c🛒 Comandes WEB carregat', 'font-size: 16px; font-weight: bold; color: #6b21a8;');
+        console.log('%cEl progrés es guarda automàticament al teu navegador.', 'color: #4a5568;');
+    </script>
+
+</body>
+</html>
