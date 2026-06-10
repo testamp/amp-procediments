@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amenities Pack · Procediments d'Exportació</title>
+    <title>AMP Procediments · Amenities Pack</title>
     <!-- 
         Importem les tipografies de Google Fonts.
         Faig servir 'Plus Jakarta Sans' per al text general (moderna, llegible, amb una mica de caràcter)
@@ -583,6 +583,22 @@
             background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
         }
 
+        .country-card[data-country="web"] .country-header {
+            background: linear-gradient(135deg, #6b21a8 0%, #4c1d95 100%);
+        }
+
+        .country-card[data-country="sega"] .country-header {
+            background: linear-gradient(135deg, #2f855a 0%, #22543d 100%);
+        }
+
+        .country-card[data-country="web"] .difficulty-bar.active {
+            background: #6b21a8;
+        }
+
+        .country-card[data-country="sega"] .difficulty-bar.active {
+            background: #2f855a;
+        }
+
         .country-card[data-country="suissa"] .country-header {
             background: linear-gradient(135deg, #b7791f 0%, #975a16 100%);
         }
@@ -1079,12 +1095,12 @@
         <div class="header-inner">
             <a href="#" class="logo">
                 <div class="logo-mark">A</div>
-                <span>Amenities Pack <span style="color: var(--color-text-muted); font-weight: 500;">· Exportacions</span></span>
+                <span>Amenities Pack <span style="color: var(--color-text-muted); font-weight: 500;">· Procediments</span></span>
             </a>
             <nav class="nav" id="nav">
-                <a href="#paisos" class="nav-link">Procediments</a>
+                <a href="#paisos" class="nav-link">Exportacions</a>
+                <a href="#interns" class="nav-link">Gestió interna</a>
                 <a href="recursos.html" class="nav-link">Recursos</a>
-                <a href="#com-funciona" class="nav-link">Com funciona</a>
                 <a href="#paisos" class="nav-cta">
                     Comença ara
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1107,10 +1123,10 @@
                     Versió 1.1 · Maig 2026
                 </div>
                 <h1 class="hero-title">
-                    Procediments d'exportació <span class="hero-title-highlight">fora de la UE</span>
+                    Els procediments d'Amenities Pack, <span class="hero-title-highlight">a un sol clic</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Guia operativa de l'equip d'exportacions d'Amenities Pack. Tota la documentació, els passos i els contactes que necessites per gestionar enviaments al Regne Unit i Noruega, sempre a mà i sempre actualitzats.
+                    Guia operativa interna d'Amenities Pack: exportacions fora de la UE, tramitació de comandes web i gestió de magatzem. Tota la documentació, els passos i els contactes, sempre a mà i sempre actualitzats.
                 </p>
                 <div class="hero-actions">
                     <a href="#paisos" class="btn btn-primary">
@@ -1134,6 +1150,10 @@
                 <div class="floating-tag floating-tag-no">
                     <span style="font-size: 1.2rem;">🇳🇴</span>
                     <span>Noruega · MASKE</span>
+                </div>
+                <div class="floating-tag floating-tag-ch">
+                    <span style="font-size: 1.2rem;">🛒</span>
+                    <span>Comandes WEB</span>
                 </div>
 
                 <!-- SVG del camió fet a mà -->
@@ -1257,11 +1277,11 @@
     <section class="stats">
         <div class="stats-inner">
             <div class="stat reveal">
-                <div class="stat-number" data-target="2">0</div>
-                <div class="stat-label">Països cobertos</div>
+                <div class="stat-number" data-target="3">0</div>
+                <div class="stat-label">Procediments actius</div>
             </div>
             <div class="stat reveal">
-                <div class="stat-number" data-target="20">0</div>
+                <div class="stat-number" data-target="18">0</div>
                 <div class="stat-label">Passos documentats</div>
             </div>
             <div class="stat reveal">
@@ -1280,8 +1300,8 @@
     ============================================ -->
     <section class="countries" id="paisos">
         <div class="section-header">
-            <span class="section-eyebrow">Selecciona destí</span>
-            <h2 class="section-title">Quin procediment necessites consultar?</h2>
+            <span class="section-eyebrow">Exportacions fora de la UE</span>
+            <h2 class="section-title">Procediments d'exportació</h2>
             <p class="section-subtitle">
                 Cada país té el seu propi procediment, contactes i requisits documentals. Selecciona el destí del camió que estàs gestionant per accedir a la guia completa.
             </p>
@@ -1372,6 +1392,97 @@
     </section>
 
     <!-- ============================================
+         SECCIÓ GESTIÓ INTERNA
+    ============================================ -->
+    <section class="countries" id="interns" style="padding-top: 0;">
+        <div class="section-header">
+            <span class="section-eyebrow">Gestió interna</span>
+            <h2 class="section-title">Procediments de gestió interna</h2>
+            <p class="section-subtitle">
+                Guies operatives per als processos interns de l'empresa: tramitació de comandes de la botiga web i gestió del magatzem.
+            </p>
+        </div>
+
+        <div class="countries-grid">
+            <!-- Targeta Comandes WEB -->
+            <a href="comandes-web.html" class="country-card reveal" data-country="web">
+                <div class="country-header">
+                    <div class="country-flag">🛒</div>
+                    <div>
+                        <div class="country-name">Comandes WEB</div>
+                        <div class="country-client">Botiga online · Tramitació de comandes</div>
+                    </div>
+                </div>
+                <div class="country-body">
+                    <div class="country-meta">
+                        <div class="country-meta-item">
+                            <svg class="country-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            ~15 min per comanda
+                        </div>
+                        <div class="country-meta-item">
+                            <svg class="country-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            6 passos
+                        </div>
+                    </div>
+                    <p class="country-description">
+                        De la pantalla de preacceptació fins a la verificació amb <strong>Navision</strong>. Inclou la gestió de pagaments per targeta i transferència i la creació de fitxes de client.
+                    </p>
+                    <div class="difficulty">
+                        <span class="difficulty-label">Complexitat</span>
+                        <div class="difficulty-bars">
+                            <div class="difficulty-bar active"></div>
+                            <div class="difficulty-bar active"></div>
+                            <div class="difficulty-bar"></div>
+                            <div class="difficulty-bar"></div>
+                            <div class="difficulty-bar"></div>
+                        </div>
+                    </div>
+                    <div class="country-cta">
+                        <span>Veure procediment</span>
+                        <svg class="country-cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Targeta Magatzem SEGA -->
+            <a href="#" class="country-card reveal" data-country="sega" onclick="return false;" style="cursor: default;">
+                <div class="country-header">
+                    <div class="country-flag">📦</div>
+                    <div>
+                        <div class="country-name">Magatzem SEGA</div>
+                        <div class="country-client">Gestió del magatzem</div>
+                    </div>
+                </div>
+                <div class="country-body">
+                    <div class="country-meta">
+                        <div class="country-meta-item">
+                            <svg class="country-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            En preparació
+                        </div>
+                    </div>
+                    <p class="country-description">
+                        Guia operativa per a la gestió del magatzem <strong>SEGA</strong>. El contingut s'està documentant i estarà disponible aviat.
+                    </p>
+                    <div class="difficulty">
+                        <span class="difficulty-label">Complexitat</span>
+                        <div class="difficulty-bars">
+                            <div class="difficulty-bar"></div>
+                            <div class="difficulty-bar"></div>
+                            <div class="difficulty-bar"></div>
+                            <div class="difficulty-bar"></div>
+                            <div class="difficulty-bar"></div>
+                        </div>
+                    </div>
+                    <div class="country-cta">
+                        <span>Disponible properament</span>
+                        <svg class="country-cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================
          SECCIÓ COM FUNCIONA
     ============================================ -->
     <section class="how-it-works" id="com-funciona">
@@ -1423,7 +1534,7 @@
                     <span>Amenities Pack</span>
                 </div>
                 <p class="footer-tagline">
-                    Plataforma interna del departament d'exportacions. Una eina feta per a l'equip per garantir que cada enviament arriba al destí sense incidències documentals.
+                    Plataforma interna de procediments d'Amenities Pack. Una eina feta per a l'equip per garantir que cada procés es fa bé a la primera.
                 </p>
             </div>
 
@@ -1432,6 +1543,7 @@
                 <ul class="footer-links">
                     <li><a href="uk.html">Regne Unit</a></li>
                     <li><a href="noruega.html">Noruega</a></li>
+                    <li><a href="comandes-web.html">Comandes WEB</a></li>
                 </ul>
             </div>
 
