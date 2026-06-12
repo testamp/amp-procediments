@@ -1610,6 +1610,14 @@
                                 <div class="callout-text">Cap comanda s'aprova directament des d'aquí. Abans de processar res, cal verificar el mètode i l'estat del pagament (pas 2).</div>
                             </div>
                         </div>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-icon">📧</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Organitzar el correu un cop imprès</div>
+                                <div class="callout-text">Un cop hem imprès la comanda, cal moure el correu rebut a <strong>pedidosweb@amenitiespack.com</strong> cap a la carpeta <strong>"web comandes"</strong>. Així mantenim la safata d'entrada neta i sabem quines comandes ja s'han processat.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -1656,6 +1664,14 @@
                                 <div class="callout-text">No s'aprova cap comanda per transferència sense justificant del client o confirmació de l'Eduard. Aprovar sense cobrar és enviar mercaderia gratis.</div>
                             </div>
                         </div>
+
+                        <div class="callout callout-info">
+                            <div class="callout-icon">⭐</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Excepció: client W344</div>
+                                <div class="callout-text">El client <strong>W344</strong> és una excepció a la regla anterior. Aprovem les seves comandes encara que estiguin marcades amb pagament per <strong>transferència</strong>, <strong>sense necessitat de tenir confirmació del pagament</strong> d'aquesta transferència.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -1696,6 +1712,14 @@
                                 <div class="callout-text">Aquest sistema garanteix que comanda i cobrament avancen en paral·lel: nosaltres controlem l'enviament i administració controla el pagament. Si una de les dues còpies no es lliura, el circuit es trenca.</div>
                             </div>
                         </div>
+
+                        <div class="callout callout-warning">
+                            <div class="callout-icon">📁</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Comandes sense stock o personalitzades</div>
+                                <div class="callout-text">A la còpia que ens quedem nosaltres: si el producte <strong>no té stock</strong> o és un <strong>personalitzat que requereix producció nova</strong>, guardem el full a la carpeta <strong>"Comandes pendents"</strong> que té l'Enric a la seva taula, anotant-hi una <strong>data aproximada</strong> que ens doni el departament de producció per revisar quan estarà fabricat i poder procedir amb l'enviament.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -1734,7 +1758,7 @@
                         <p>A la part superior de la pantalla trobaràs la barra d'accions de Navision. Des d'aquí es creen clients i comandes i s'actualitzen les dades:</p>
 
                         <div class="screenshot">
-                            <img src="img/nav-accions-precomanda.png" alt="Barra d'accions de Navision a la pantalla de precomanda">
+                            <img src="img/nav-accions-precomanda-v2.png" alt="Barra d'accions de Navision a la pantalla de precomanda">
                             <div class="screenshot-caption">Barra d'accions de Navision a la pantalla de precomanda</div>
                         </div>
 
@@ -1776,14 +1800,6 @@
                                 <span class="legend-action">Anular pedido</span>
                                 <span class="legend-desc">Anul·la la comanda</span>
                             </div>
-                            <div class="legend-item">
-                                <span class="legend-action">Ver pedido en firme</span>
-                                <span class="legend-desc">Mostra la comanda en ferm generada</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-action">Ver oferta en firme</span>
-                                <span class="legend-desc">Mostra l'oferta en ferm</span>
-                            </div>
                         </div>
 
                         <h4>Abans de crear res, comprova</h4>
@@ -1792,12 +1808,54 @@
                             <li>Que les <strong>dades informades a cada camp</strong> són correctes. És important per com quedarà registrada la fitxa i l'adreça d'enviament</li>
                         </ul>
 
+                        <h4>Verifica abans de clicar cap acció</h4>
+                        <p>Abans de clicar cap acció, assegura't que el que indica el client és correcte. <strong>Sovint escriuen malament la informació als camps</strong>, i moltes vegades nosaltres ja ho hem corregit en comandes anteriors. Per tant, el correcte sol ser <strong>el que ja tenim a la fitxa de client</strong>, no el que arriba amb la comanda nova.</p>
+                        <p>Només modifiquem clients i adreces existents <strong>si realment cal fer-ho</strong>.</p>
+
                         <h4>Ordre habitual de les accions</h4>
                         <p>Si tota la informació és correcta, el flux normal és:</p>
                         <ul>
-                            <li><strong>Client nou:</strong> Nuevo cliente → Nueva dirección envío</li>
+                            <li><strong>Client nou:</strong> Nuevo cliente → (configurar transportista) → Nueva dirección envío</li>
                             <li><strong>Client existent:</strong> Actualizar datos fiscales → Actualizar dirección entrega (si és necessari)</li>
                         </ul>
+
+                        <h4>Configurar el transportista en crear un client nou</h4>
+                        <p>Quan creem un client nou, <strong>abans de crear l'adreça d'enviament</strong>, cal entrar a l'acció <strong>"Cliente"</strong> de la fitxa acabada de crear i configurar-hi el <strong>transportista que correspon</strong> segons el destí i el pes. Així, quan després creem l'adreça, aquesta ja portarà el transportista correcte configurat prèviament.</p>
+
+                        <table class="transport-table">
+                            <thead>
+                                <tr>
+                                    <th>Transportista</th>
+                                    <th>Quan s'utilitza</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MRW</td>
+                                    <td>Enviaments nacionals de menys de 80 kg</td>
+                                </tr>
+                                <tr>
+                                    <td>CBL</td>
+                                    <td>Enviaments península de més de 80 kg, i Portugal amb qualsevol pes</td>
+                                </tr>
+                                <tr>
+                                    <td>TRIAS</td>
+                                    <td>Barcelona i Balears amb qualsevol pes, i Andorra</td>
+                                </tr>
+                                <tr>
+                                    <td>FRANCE EXPEDITION</td>
+                                    <td>Enviaments a França</td>
+                                </tr>
+                                <tr>
+                                    <td>HELLMANN</td>
+                                    <td>Qualsevol altre enviament fora d'Espanya que no sigui França o Portugal</td>
+                                </tr>
+                                <tr>
+                                    <td>LUCHANA</td>
+                                    <td>Illes Canàries</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                         <h4>Camps en vermell</h4>
                         <p>Si algun camp surt <strong>en vermell</strong>, indica una discrepància entre les dades registrades i les noves. Cal revisar si s'han de modificar o no, <strong>segons el que ens indiqui el client</strong>.</p>
@@ -1850,9 +1908,15 @@
                         <p>Si el client és nou, abans de tramitar la comanda cal:</p>
                         <ul>
                             <li><strong>Crear la fitxa de client</strong> al sistema</li>
-                            <li>Verificar que el <strong>CIF/VAT</strong> que ha indicat és <strong>vàlid</strong></li>
+                            <li>Verificar que el <strong>CIF / VAT / DNI</strong> que ha indicat és <strong>vàlid</strong></li>
                             <li>Determinar si és una <strong>empresa</strong> o un <strong>particular</strong></li>
                         </ul>
+
+                        <p>Per validar el document d'identificació (CIF, VAT o DNI), pots fer servir aquesta web:</p>
+                        <a href="https://validardni.es/" target="_blank" rel="noopener" class="external-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Validar document a validardni.es
+                        </a>
 
                         <h4>Clients estrangers de la UE: validació VIES</h4>
                         <p>Si el client és d'un <strong>país estranger dins de la UE</strong>, hem de saber si el seu VAT és un número d'identificació fiscal <strong>intracomunitari</strong>, per assignar els <strong>grups comptables correctes (UE / EXT)</strong> a la seva fitxa de client.</p>
@@ -1863,11 +1927,18 @@
                             Validar VAT al VIES (Comissió Europea)
                         </a>
 
-                        <p>Si el VAT és vàlid com a operador intracomunitari, a la <strong>fitxa de client</strong> de Navision hem de marcar el tick d'<strong>operador intracomunitari verificat (VIES)</strong>:</p>
+                        <p>El tick de <strong>"Op. Intrac. Verificado" (VIES) no s'ha de marcar manualment</strong>. Es marca automàticament quan cliquem l'acció de Navision <strong>"Verificar VIES"</strong>:</p>
 
                         <div class="screenshot">
-                            <img src="img/vies-verificat-navision.png" alt="Ticks d'Operador Intracomunitari i Op. Intrac. Verificado a la fitxa de client de Navision">
-                            <div class="screenshot-caption">Camps "Operador Intracomunitario" i "Op. Intrac. Verificado" a la fitxa de client de Navision</div>
+                            <img src="img/nav-verificar-vies.png" alt="Acció Verificar VIES al menú Navegar de Navision">
+                            <div class="screenshot-caption">Acció "Verificar VIES" al menú Navegar de la fitxa de client</div>
+                        </div>
+
+                        <p>Un cop executada l'acció, els camps de la fitxa quedaran marcats automàticament:</p>
+
+                        <div class="screenshot">
+                            <img src="img/vies-verificat-navision.png" alt="Ticks d'Operador Intracomunitari i Op. Intrac. Verificado marcats a la fitxa de client">
+                            <div class="screenshot-caption">Camps "Operador Intracomunitario" i "Op. Intrac. Verificado" marcats després de l'acció</div>
                         </div>
 
                         <div class="callout callout-warning">
@@ -1963,6 +2034,14 @@
                         <h4>Què cal fer</h4>
                         <p>Un cop tenim <strong>stock de tot</strong> i estem segurs que podem enviar la comanda, ens fixem en el <strong>transportista escollit</strong> per gestionar l'enviament. La tria depèn del destí i del pes de la mercaderia:</p>
 
+                        <div class="callout callout-warning">
+                            <div class="callout-icon">🔁</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Verifica sempre el transportista</div>
+                                <div class="callout-text">Encara que el transportista s'hagi de configurar quan creem el client (pas 4), <strong>sempre cal verificar que el que indica la comanda és el correcte</strong>. No donis per fet que és bo: comprova-ho amb la taula següent.</div>
+                            </div>
+                        </div>
+
                         <table class="transport-table">
                             <thead>
                                 <tr>
@@ -2048,8 +2127,14 @@
                         <p>Si una línia surt <strong>en vermell</strong>, cal assignar-li lot. Com es fa:</p>
                         <ul>
                             <li>Prem <strong>Ctrl + L</strong> i després <strong>F4</strong></li>
+                            <li>Un cop a dins, clica els <strong>tres punts de la línia</strong> per obrir la selecció de lots</li>
                             <li>Assigna el <strong>lot més antic disponible</strong></li>
                         </ul>
+
+                        <div class="screenshot">
+                            <img src="img/nav-dock-picking-lots.png" alt="Pantalla de Dock Picking de Navision amb l'acció per assignar lot ressaltada">
+                            <div class="screenshot-caption">Pantalla de Dock Picking: clica els tres punts de la línia per assignar el lot</div>
+                        </div>
 
                         <div class="callout callout-warning">
                             <div class="callout-icon">⚠️</div>
